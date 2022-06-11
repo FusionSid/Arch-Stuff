@@ -2,7 +2,7 @@ pacman -Syu
 ln -sf /usr/share/zoneinfo/Pacific/Auckland /etc/localtime
 sed -i.backup -e "170 s/^#//" /etc/locale.gen
 echo "LANG=en.NZ_UTF-8" >> /etc/locale.conf
-paman -S ntp zsh wget tmux wget vim neofetch lolcat
+pacman -S ntp zsh wget tmux wget vim neofetch lolcat
 ntpd -qg
 hwclock --systohc
 locale-gen
