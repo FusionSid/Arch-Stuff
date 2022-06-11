@@ -51,6 +51,12 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 echo "git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd && rm -rf yay" > ~/install_yay.sh
 chmod +x ~/install_yay.sh
 
+# Kitty font
+wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip" -O fc.zip
+mkdir /usr/share/fonts/FiraCode
+unzip fc.zip -d /usr/share/fonts/FiraCode
+rm -rf fc.zip
+
 # Select desktop enviroment
 read -p "gnome or kde? " desktop
 if [ $desktop == 'gnome' ]; then 
