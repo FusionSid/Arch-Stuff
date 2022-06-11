@@ -43,11 +43,11 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # Select desktop enviroment
 read -p "gnome or kde? " desktop
 if [ $desktop == 'gnome' ]; then 
-    pacman -S gnome gnome-tweaks --noconfirm;
-    systemctl enable gdm
+    sudo pacman -S gnome gnome-tweaks;
+    sudo systemctl enable gdm
 elif [ $desktop == 'kde' ]; then 
-    pacman -S plasma kde-applications packagekit-qt5 sddm --noconfirm
-    systemctl enable sddm
+    sudo pacman -S plasma kde-applications packagekit-qt5 sddm --noconfirm
+    sudo systemctl enable sddm
 else
     echo 'Not a valid choice skill issue'
 fi
