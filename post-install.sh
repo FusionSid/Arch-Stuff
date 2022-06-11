@@ -59,18 +59,16 @@ rm -rf fc.zip
 # Select desktop enviroment
 read -p "gnome or kde? " desktop
 if [ $desktop == 'gnome' ]; then 
-    pacman -S gnome gnome-tweaks --noconfirm; 
-    systemctl enable gdm; break
-if [ $desktop == 'kde' ]; then 
-    pacman -S plasma kde-applications packagekit-qt5 sddm --noconfirm; 
-    systemctl enable sddm; break
-if [ $desktop == 'none' ]; then 
-    break
+    pacman -S gnome gnome-tweaks --noconfirm;
+    systemctl enable gdm
+elif [ $desktop == 'kde' ]; then 
+    pacman -S plasma kde-applications packagekit-qt5 sddm --noconfirm
+    systemctl enable sddm
 else
     echo 'Not a valid choice skill issue'
 fi
 
 echo "Setup complete!"
-echo "do bash install_yay.sh"
+echo "switch to root then run do `bash install_yay.sh`"
 echo "Type `exit` twice then `reboot` to complete"
 sudo su sid
