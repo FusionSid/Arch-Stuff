@@ -40,22 +40,6 @@ systemctl enable NetworkManager
 grub-install $disk_name
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# i commented this cause theres legit nothing in those files/folders yet
-mkdir -p ~/.config
-cp -r ./dotfiles/* ~/.config
-
-# Oh my zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# i cant run this in sudo so this is a script i can run later :(
-echo "git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd && rm -rf yay" > install_yay.sh
-
-# Kitty font
-wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip" -O fc.zip
-mkdir /usr/share/fonts/FiraCode
-unzip fc.zip -d /usr/share/fonts/FiraCode
-rm -rf fc.zip
-
 # Select desktop enviroment
 read -p "gnome or kde? " desktop
 if [ $desktop == 'gnome' ]; then 
@@ -68,7 +52,21 @@ else
     echo 'Not a valid choice skill issue'
 fi
 
-echo "Setup complete!"
-echo "switch to root then run do `bash install_yay.sh`"
-echo "Type `exit` twice then `reboot` to complete"
-sudo su sid
+# Copy dotfiles
+sudo su sid -c "sudo mkdir -p ~/.config"
+sudo su sid -c "sudo cp -r /Arch-Stuff/dotfiles/* ~/.config"
+
+# Oh my zsh
+sudo su sid -c "bash $(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install Yay
+sudo su sid -c "cd ~/ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd && rm -rf yay"
+
+# Kitty font
+wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip" -O /Arch-Stuff/fc.zip
+mkdir /usr/share/fonts/FiraCode
+unzip /Arch-Stuff/fc.zip -d /usr/share/fonts/FiraCode
+rm -rf /Arch-Stuff/fc.zip
+
+# End
+echo "Setup complete!\nType `exit` then `reboot` to complete""
