@@ -2,7 +2,7 @@
 read -p "Enter disk name: " disk_name
 
 # download some pacman things
-pacman -Syu && pacman -S ntp zsh wget tmux wget vim firefox kitty neofetch lolcat iwd htop bashtop network-manager-applet git xorg xorg-xinit --noconfirm
+pacman -Syu && pacman -S ntp zsh wget tmux unzip wget vim firefox kitty neofetch lolcat iwd htop bashtop network-manager-applet git xorg xorg-xinit --noconfirm
 
 # locale and time
 ln -sf /usr/share/zoneinfo/Pacific/Auckland /etc/localtime
@@ -42,14 +42,13 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # i commented this cause theres legit nothing in those files/folders yet
 mkdir -p ~/.config
-cp -r dotfiles/* ~/.config
+cp -r ./dotfiles/* ~/.config
 
 # Oh my zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # i cant run this in sudo so this is a script i can run later :(
-echo "git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd && rm -rf yay" > ~/install_yay.sh
-chmod +x ~/install_yay.sh
+echo "git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd && rm -rf yay" > install_yay.sh
 
 # Kitty font
 wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip" -O fc.zip
@@ -60,13 +59,18 @@ rm -rf fc.zip
 # Select desktop enviroment
 read -p "gnome or kde? " desktop
 if [ $desktop == 'gnome' ]; then 
-    pacman -S gnome gnome-tweaks --noconfirm; systemctl enable gdm; break
+    pacman -S gnome gnome-tweaks --noconfirm; 
+    systemctl enable gdm; break
 if [ $desktop == 'kde' ]; then 
-    pacman -S plasma kde-applications packagekit-qt5 sddm --noconfirm; systemctl enable sddm; break
+    pacman -S plasma kde-applications packagekit-qt5 sddm --noconfirm; 
+    systemctl enable sddm; break
 if [ $desktop == 'none' ]; then 
     break
 else
     echo 'Not a valid choice skill issue'
 fi
 
-exit
+echo "Setup complete!"
+echo "do bash install_yay.sh"
+echo "Type `exit` twice then `reboot` to complete"
+sudo su sid

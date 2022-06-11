@@ -1,5 +1,5 @@
 # before running make sure to connect to internet and to have curl or git to get this script
-# curl https://raw.githubusercontent.com/FusionSid/Arch-Stuff/master/install.sh -o install.sh
+# git clone https://github.com/FusionSid/Arch-Stuff.git
 
 clear
 lsblk
@@ -33,10 +33,6 @@ swapon $diskp2
 
 # Install linux
 pacstrap /mnt base linux linux-firmware sof-firmware base-devel nano grub efibootmgr networkmanager
-
-# download post install script and place in mnt to run later
-curl "https://raw.githubusercontent.com/FusionSid/Arch-Stuff/master/post-install.sh" -o /mnt/post-install.sh
-chmod +x /mnt/post-install.sh
 
 # fstab
 genfstab /mnt > /mnt/etc/fstab
