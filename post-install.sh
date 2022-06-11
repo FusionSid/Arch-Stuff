@@ -14,7 +14,7 @@ sudo mkdir /usr/share/fonts/FiraCode
 sudo unzip /Arch-Stuff/fc.zip -d /usr/share/fonts/FiraCode
 
 # zshrc
-cat /Arch-Stuff/.zshrc >> ~/.zshrc
+cp /Arch-Stuff/.zshrc ~/.zshrc
 
 # End
 echo "Setup complete!\nType `exit` then `reboot` to complete"
