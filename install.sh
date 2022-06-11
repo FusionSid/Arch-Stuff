@@ -32,10 +32,13 @@ mount $diskp1 /mnt/boot/efi
 swapon $diskp2
 
 # Install linux
-pacstrap /mnt base linux linux-firmware sof-firmware base-devel nano grub efibootmgr networkmanager
+pacstrap /mnt base linux linux-firmware sof-firmware base-devel nano grub efibootmgr networkmanager git
 
 # fstab
 genfstab /mnt > /mnt/etc/fstab
+
+# copy this folder into mnt
+cp -r /Arch-Stuff /mnt/Arch-Stuff
 
 # chroot
 arch-chroot /mnt
