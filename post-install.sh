@@ -14,7 +14,10 @@ sudo mkdir /usr/share/fonts/FiraCode
 sudo unzip /Arch-Stuff/fc.zip -d /usr/share/fonts/FiraCode
 
 # zshrc
-cp /Arch-Stuff/.zshrc ~/.zshrc
+cp /Arch-Stuff/dotfiles/.zshrc ~/.zshrc
+
+# Install pip
+curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
 
 # End
 echo "Setup complete!\nType `exit` then `reboot` to complete"

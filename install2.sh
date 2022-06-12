@@ -2,7 +2,7 @@
 read -p "Enter disk name: " disk_name
 
 # download some pacman things
-pacman -Syu && pacman -S ntp zsh wget tmux unzip wget vim firefox kitty neofetch lolcat iwd htop bashtop network-manager-applet git xorg xorg-xinit --noconfirm
+pacman -Syu && pacman -S ntp zsh wget tmux unzip wget vim  lolcat iwd tree htop bashtop network-manager-applet openssh git xorg xorg-xinit --noconfirm
 
 # locale and time
 ln -sf /usr/share/zoneinfo/Pacific/Auckland /etc/localtime
@@ -43,10 +43,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # Select desktop enviroment
 read -p "gnome or kde? " desktop
 if [ $desktop == 'gnome' ]; then 
-    sudo pacman -S gnome gnome-tweaks;
+    sudo pacman -S gnome gnome-tweaks firefox kitty;
     sudo systemctl enable gdm
 elif [ $desktop == 'kde' ]; then 
-    sudo pacman -S plasma kde-applications packagekit-qt5 sddm --noconfirm
+    sudo pacman -S plasma kde-applications packagekit-qt5 sddm firefox kitty --noconfirm
     sudo systemctl enable sddm
 else
     echo 'Not a valid choice skill issue'
