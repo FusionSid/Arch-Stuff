@@ -1,12 +1,12 @@
 # desktop enviroment
-read -p "gnome or kde or xfce? " desktop
+read -p "gnome, kde or xfce? " desktop
 if [ $desktop == 'gnome' ]; then 
     sudo pacman -S gnome gnome-tweaks firefox kitty;
     sudo systemctl enable gdm
 elif [ $desktop == 'kde' ]; then 
     sudo pacman -S plasma konsole packagekit-qt5 sddm firefox kitty --noconfirm
     sudo systemctl enable sddm
-elif [ $desktop == 'kde' ]; then 
+elif [ $desktop == 'xfce' ]; then 
     sudo pacman -S xfce4 xfce4-goodies lightdm lightdm-gtk-greeter firefox kitty --noconfirm
     sudo systemctl enable lightdm
     sudo chown -R sid .
