@@ -12,3 +12,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Pip
 PATH="/home/sid/.local/bin:$PATH"
+
+# aliases
+alias "update" = "pacman -Syu"
