@@ -7,7 +7,9 @@ ZSH_THEME="robbyrussell"
 
 plugins=(
   git
+  python
 )
+
 source $ZSH/oh-my-zsh.sh
 
 # Pip
