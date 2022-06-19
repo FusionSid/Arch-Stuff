@@ -1,17 +1,22 @@
 # desktop enviroment
-read -p "gnome, kde or xfce? " desktop
-if [ $desktop == 'gnome' ]; then 
-    sudo pacman -S gnome gnome-tweaks firefox kitty;
-    sudo systemctl enable gdm
-elif [ $desktop == 'kde' ]; then 
-    sudo pacman -S plasma konsole packagekit-qt5 sddm firefox kitty --noconfirm
-    sudo systemctl enable sddm
-elif [ $desktop == 'xfce' ]; then 
-    sudo pacman -S xfce4 xfce4-goodies lightdm lightdm-gtk-greeter firefox kitty --noconfirm
-    sudo systemctl enable lightdm
-    sudo chown -R sid .
+read -p "Would you like to install a desktop enviroment? (y/N) " installdesktop
+if [ "$installdesktop" == "y" ] || [ "$installdesktop" == "yes" ]; then
+    read -p "gnome, kde or xfce? " desktop
+    if [ $desktop == 'gnome' ]; then 
+        sudo pacman -S gnome gnome-tweaks firefox kitty;
+        sudo systemctl enable gdm
+    elif [ $desktop == 'kde' ]; then 
+        sudo pacman -S plasma konsole packagekit-qt5 sddm firefox kitty --noconfirm
+        sudo systemctl enable sddm
+    elif [ $desktop == 'xfce' ]; then 
+        sudo pacman -S xfce4 xfce4-goodies lightdm lightdm-gtk-greeter firefox kitty --noconfirm
+        sudo systemctl enable lightdm
+        sudo chown -R sid .
+    else
+        echo 'Not a valid choice skill issue'
+    fi
 else
-    echo 'Not a valid choice skill issue'
+    echo "ok"
 fi
 
 # Copy dotfiles
