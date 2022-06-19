@@ -14,4 +14,4 @@ source $ZSH/oh-my-zsh.sh
 PATH="/home/sid/.local/bin:$PATH"
 
 # aliases
-alias "update" = "pacman -Syu"
+alias update="sudo pacman -Syu"
