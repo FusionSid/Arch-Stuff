@@ -36,7 +36,7 @@ yay -S oh-my-zsh-git --noconfirm
 
 # Terminal font
 sudo wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip" -O /Arch-Stuff/fc.zip
-sudo mkdir /usr/share/fonts/FiraCode
+sudo mkdir -p /usr/share/fonts/FiraCode
 sudo unzip /Arch-Stuff/fc.zip -d /usr/share/fonts/FiraCode
 
 # Install pip

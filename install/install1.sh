@@ -1,6 +1,7 @@
 # before running make sure to connect to internet and to have curl or git to get this script
-# git clone https://github.com/FusionSid/Arch-Stuff.git
+# git clone https://github.com/FusionSid/Arch-Stuff.git make sure to clone into the root dir ( /Arch-Stuff )
 
+# Get disk name
 clear
 lsblk
 read -p "Enter disk name: " disk_name
@@ -8,6 +9,7 @@ echo "Starting Install..."
 echo "Create Partitions:"
 sleep 1
 
+# open cfdisk on disk
 cfdisk $disk_name
 
 # get partition names

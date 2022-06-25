@@ -4,13 +4,13 @@ lsblk
 read -p "Enter disk name: " disk_name
 
 # download some pacman things
-pacman -Syu && pacman -S ntp zsh wget neofetch tmux unzip wget lolcat iwd tree htop python3.10 bashtop network-manager-applet openssh git xorg xorg-xinit --noconfirm
+pacman -Syu && pacman -S ntp zsh wget neofetch tmux unzip wget lolcat iwd tree htop python3 bashtop network-manager-applet openssh git xorg xorg-xinit --noconfirm
 
 # locale and time
 ln -sf /usr/share/zoneinfo/Pacific/Auckland /etc/localtime
 sed -i.backup -e "170 s/^#//" /etc/locale.gen
 echo "LANG=en.NZ_UTF-8" > /etc/locale.conf
-ntpd -qg
+ntpd -qg # set time correctly just in case
 hwclock --systohc
 locale-gen
 
@@ -43,4 +43,4 @@ grub-install $disk_name
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # End
-echo "Setup complete!\nType `exit` then `reboot` to complete"
+echo "Setup complete!\nYou may now exit and then reboot\nAlso once done you can run the post install script"
