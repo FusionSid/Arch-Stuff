@@ -1,8 +1,10 @@
 # get disk name for grub install at the end
+clear
+lsblk
 read -p "Enter disk name: " disk_name
 
 # download some pacman things
-pacman -Syu && pacman -S ntp zsh wget neofetch tmux unzip wget vim lolcat iwd tree htop bashtop network-manager-applet openssh git xorg xorg-xinit --noconfirm
+pacman -Syu && pacman -S ntp zsh wget neofetch tmux unzip wget lolcat iwd tree htop python3.10 bashtop network-manager-applet openssh git xorg xorg-xinit --noconfirm
 
 # locale and time
 ln -sf /usr/share/zoneinfo/Pacific/Auckland /etc/localtime
