@@ -13,7 +13,7 @@ if [ "$installdesktop" == "y" ] || [ "$installdesktop" == "yes" ]; then
         sudo systemctl enable lightdm
         sudo chown -R sid .
     elif [ $desktop == 'bspwm' ]; then 
-        sudo pacman -S bspwm sxhkd dmenu picom feh --noconfirm
+        sudo pacman -S bspwm sxhkd dmenu picom feh kitty firefox --noconfirm
     else
         echo 'Not a valid choice skill issue'
     fi
@@ -25,11 +25,8 @@ fi
 sudo mkdir -p ~/.config
 sudo cp -r /Arch-Stuff/config/* ~/.config
 
-# Home dir
-cp -r /Arch-Stuff/home/* ~/
-
 # Install Yay
-cd ~/ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd && rm -rf yay
+cd ~/ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm && cd && rm -rf yay
 
 # Oh my zsh
 yay -S oh-my-zsh-git --noconfirm
@@ -41,5 +38,8 @@ sudo unzip /Arch-Stuff/fc.zip -d /usr/share/fonts/FiraCode
 
 # Install pip
 curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
+
+# Home dir
+cp -r /Arch-Stuff/home/. ~/
 
 echo "Setup complete!"
