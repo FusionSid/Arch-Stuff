@@ -6,11 +6,7 @@
 
 
 # download some useful packages
-pacman -Syu && pacman -S ntp zsh wget \
-    neofetch tmux unzip wget lolcat iwd tree \
-    htop python3 bashtop network-manager-applet openssh \
-    git xorg xorg-xinit vim-plug firefox kitty \
-    --noconfirm
+pacman -Syu && pacman -S ntp zsh wget neofetch tmux unzip wget lolcat iwd tree htop python3 bashtop network-manager-applet openssh git xorg xorg-xinit vim-plug firefox kitty --noconfirm
 
 # locale and time
 ln -sf /usr/share/zoneinfo/Pacific/Auckland /etc/localtime
