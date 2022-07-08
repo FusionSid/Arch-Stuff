@@ -14,7 +14,7 @@ while [ -L "${SCRIPT_PATH}" ]; do
 done
 SCRIPT_PATH="$(readlink -f "${SCRIPT_PATH}")"
 SCRIPT_DIR="$(cd -P "$(dirname -- "${SCRIPT_PATH}")" >/dev/null 2>&1 && pwd)"
-SCRIPT_DIR="$SCRIPT_DIR" | sed 's/install//'
+SCRIPT_DIR=$(echo $SCRIPT_DIR | sed 's/install//')
 clear
 
 ## Begin
