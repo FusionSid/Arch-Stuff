@@ -31,7 +31,6 @@ if [ "$installdesktop" == "y" ] || [ "$installdesktop" == "yes" ]; then
         sudo systemctl enable lightdm
     elif [ $desktop == 'bspwm' ]; then
         sudo pacman -S bspwm sxhkd dmenu polybar picom feh arandr --noconfirm
-        sudo chmod +x ~/.config/polybar/launch.sh
     else
         echo 'Not a valid choice skill issue'
     fi
@@ -63,6 +62,9 @@ curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
 
 # Home dir
 cp -r $SCRIPT_DIR/home/. ~/
+
+# Give polybar launch script perms
+sudo chmod +x ~/.config/polybar/launch.sh
 
 # Useful Yay packages
 yay -S vim-plug firefox kitty lolcat bashtop \
