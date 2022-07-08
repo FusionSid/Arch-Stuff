@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
 
-
 ## Install Part 2
 # This is run after arch-chroot. This script is to finish the setup for arch and install some packages
 
-
 # download some useful packages
-pacman -Syu && pacman -S ntp zsh wget neofetch tmux unzip wget lolcat iwd tree htop python3 bashtop network-manager-applet openssh git xorg xorg-xinit vim-plug firefox kitty --noconfirm
+pacman -Syu && pacman -S \
+    ntp zsh neofetch tmux unzip wget \
+    iwd tree htop python3 network-manager-applet \
+    openssh git xorg xorg-xinit sudo pulseaudio --noconfirm
 
 # locale and time
 ln -sf /usr/share/zoneinfo/Pacific/Auckland /etc/localtime
 sed -i.backup -e "170 s/^#//" /etc/locale.gen
-echo "LANG=en.NZ_UTF-8" > /etc/locale.conf
+echo "LANG=en.NZ_UTF-8" >/etc/locale.conf
 ntpd -qg # set time correctly just in case
 hwclock --systohc
 locale-gen
 
 # set keymap and hostname
-echo "KEYMAP=us" > /etc/vconsole.conf
-echo "fusionsid" > /etc/hostname
+echo "KEYMAP=us" >/etc/vconsole.conf
+echo "fusionsid" >/etc/hostname
 
 # Root password
 clear

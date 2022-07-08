@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 
-
 ## Post install script
 ## This is to be optionally ran after installing arch. It sets up the GUI and other things
-
 
 # Get the location of the /Arch-Stuff/ dir
 SCRIPT_PATH="${BASH_SOURCE}"
 while [ -L "${SCRIPT_PATH}" ]; do
-  SCRIPT_DIR="$(cd -P "$(dirname "${SCRIPT_PATH}")" >/dev/null 2>&1 && pwd)"
-  SCRIPT_PATH="$(readlink "${SCRIPT_PATH}")"
-  [[ ${SCRIPT_PATH} != /* ]] && SCRIPT_PATH="${SCRIPT_DIR}/${SCRIPT_PATH}"
+    SCRIPT_DIR="$(cd -P "$(dirname "${SCRIPT_PATH}")" >/dev/null 2>&1 && pwd)"
+    SCRIPT_PATH="$(readlink "${SCRIPT_PATH}")"
+    [[ ${SCRIPT_PATH} != /* ]] && SCRIPT_PATH="${SCRIPT_DIR}/${SCRIPT_PATH}"
 done
 SCRIPT_PATH="$(readlink -f "${SCRIPT_PATH}")"
 SCRIPT_DIR="$(cd -P "$(dirname -- "${SCRIPT_PATH}")" >/dev/null 2>&1 && pwd)"
@@ -22,16 +20,16 @@ clear
 read -p "Would you like to install a desktop enviroment? (y/N) " installdesktop
 if [ "$installdesktop" == "y" ] || [ "$installdesktop" == "yes" ]; then
     read -p "gnome, kde, bspwm or xfce? " desktop
-    if [ $desktop == 'gnome' ]; then 
-        sudo pacman -S gnome gnome-tweaks;
+    if [ $desktop == 'gnome' ]; then
+        sudo pacman -S gnome gnome-tweaks
         sudo systemctl enable gdm
-    elif [ $desktop == 'kde' ]; then 
+    elif [ $desktop == 'kde' ]; then
         sudo pacman -S plasma konsole packagekit-qt5 sddm --noconfirm
         sudo systemctl enable sddm
-    elif [ $desktop == 'xfce' ]; then 
+    elif [ $desktop == 'xfce' ]; then
         sudo pacman -S xfce4 xfce4-goodies lightdm lightdm-gtk-greeter --noconfirm
         sudo systemctl enable lightdm
-    elif [ $desktop == 'bspwm' ]; then 
+    elif [ $desktop == 'bspwm' ]; then
         sudo pacman -S bspwm sxhkd dmenu polybar picom feh arandr --noconfirm
         sudo chmod +x ~/.config/polybar/launch.sh
     else
@@ -42,7 +40,7 @@ else
 fi
 
 # Change owner for home dir
-cd 
+cd
 sudo chown -R sid .
 
 # Copy dotfiles
@@ -65,5 +63,10 @@ curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
 
 # Home dir
 cp -r $SCRIPT_DIR/home/. ~/
+
+# Useful Yay packages
+yay -S vim-plug firefox kitty lolcat bashtop \
+    hollywood cmatrix neovim mpv gcc --noconfirm
+clear
 
 echo "Setup complete!"

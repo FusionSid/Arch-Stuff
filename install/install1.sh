@@ -7,7 +7,6 @@
 # Internet connection
 # Curl or git installed to get the script
 
-
 # Get the location of the /Arch-Stuff/ dir
 SCRIPT_PATH="${BASH_SOURCE}"
 while [ -L "${SCRIPT_PATH}" ]; do
@@ -38,8 +37,8 @@ read -p "Enter p3 (main) name: " diskp3
 clear
 
 # format
-mkswap $diskp2 # swap
-mkfs.ext4 $diskp3 # boot 
+mkswap $diskp2         # swap
+mkfs.ext4 $diskp3      # boot
 mkfs.fat -F 32 $diskp1 # main disk
 
 # mount
@@ -56,7 +55,7 @@ pacstrap /mnt linux linux-firmware base base-devel grub efibootmgr networkmanage
 clear
 
 # fstab
-genfstab /mnt > /mnt/etc/fstab
+genfstab /mnt >/mnt/etc/fstab
 
 # copy this folder into mnt
 cp -r $SCRIPT_DIR /mnt/Arch-Stuff
