@@ -1,10 +1,16 @@
-# get disk name for grub install at the end
-clear
-lsblk
-read -p "Enter disk name: " disk_name
+#!/usr/bin/env bash
 
-# download some pacman things
-pacman -Syu && pacman -S ntp zsh wget neofetch tmux unzip wget lolcat iwd tree htop python3 bashtop network-manager-applet openssh git xorg xorg-xinit --noconfirm
+
+## Install Part 2
+# This is run after arch-chroot. This script is to finish the setup for arch and install some packages
+
+
+# download some useful packages
+pacman -Syu && pacman -S ntp zsh wget \
+    neofetch tmux unzip wget lolcat iwd tree \
+    htop python3 bashtop network-manager-applet openssh \
+    git xorg xorg-xinit vim-plug firefox kitty \
+    --noconfirm
 
 # locale and time
 ln -sf /usr/share/zoneinfo/Pacific/Auckland /etc/localtime
@@ -30,17 +36,20 @@ echo "Set password for user:"
 passwd sid
 
 # Visudo
-clear
-echo "Uncomment line"
-sleep 1
 visudo
+clear
 
 # Turn on network manager
 systemctl enable NetworkManager
+
+# get disk name for grub install
+clear
+lsblk
+read -p "Enter disk name: " disk_name
 
 # Install grub and create config
 grub-install $disk_name
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # End
-echo "Setup complete!\nYou may now exit and then reboot\nAlso once done you can run the post install script"
+echo "Setup complete!\nYou may now exit and then reboot\nAlso if you want, you can run the post install script"
