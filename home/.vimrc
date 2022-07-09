@@ -3,11 +3,14 @@ set number
 colorscheme onedark
 set hlsearch
 
-# plugins
 call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'vim-airline/vim-airline'
 call plug#end()
 
-# Set the f2 key to toggle nerd tree
 :map <F2> :NERDTreeToggle<CR>
+
+set expandtab ts=4 sw=4 airline
+:autocmd InsertEnter,InsertLeave * set cul!
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"

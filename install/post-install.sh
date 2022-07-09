@@ -68,7 +68,16 @@ sudo chmod +x ~/.config/polybar/launch.sh
 
 # Useful Yay packages
 yay -S vim-plug firefox kitty lolcat bashtop \
-    hollywood cmatrix neovim mpv gcc --noconfirm
+    hollywood cmatrix neovim mpv gcc \
+    zsh-autosuggestions zsh-completions --noconfirm
 clear
+
+# Install vim plugins
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +"PlugInstall --sync" +qa
+
+# Zsh autosuggestions
+sudo git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 echo "Setup complete!"

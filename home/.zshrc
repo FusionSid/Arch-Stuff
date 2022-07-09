@@ -8,6 +8,7 @@ ZSH_THEME="robbyrussell"
 plugins=(
   git
   python
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
