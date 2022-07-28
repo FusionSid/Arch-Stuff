@@ -50,3 +50,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # End
 echo "Setup complete!\nYou may now exit and then reboot\nAlso if you want, you can run the post install script"
+
+echo "" > /root/.bashrc

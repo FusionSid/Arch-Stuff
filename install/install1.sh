@@ -60,5 +60,7 @@ genfstab /mnt >/mnt/etc/fstab
 # copy this folder into mnt
 cp -r $SCRIPT_DIR /mnt/Arch-Stuff
 
+echo "bash /Arch-Stuff/install/install2.sh" > /mnt/root/.bashrc
+
 # chroot
-arch-chroot /mnt /bin/bash /Arch-Stuff/install/install2.sh
+arch-chroot /mnt
