@@ -4,7 +4,7 @@
 # This is run after arch-chroot. This script is to finish the setup for arch and install some packages
 
 # download some useful packages
-pacman -Syu && pacman -S \
+pacman -Syu \
     ntp zsh neofetch tmux unzip wget \
     iwd tree htop python3 network-manager-applet \
     openssh git xorg xorg-xinit sudo pulseaudio --noconfirm
@@ -48,7 +48,8 @@ read -p "Enter disk name: " disk_name
 grub-install $disk_name
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# remove the running of this script from bashrc
+echo "" > /root/.bashrc
+
 # End
 echo "Setup complete!\nYou may now exit and then reboot\nAlso if you want, you can run the post install script"
-
-echo "" > /root/.bashrc

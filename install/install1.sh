@@ -37,9 +37,9 @@ read -p "Enter p3 (main) name: " diskp3
 clear
 
 # format
+mkfs.fat -F 32 $diskp1 # main disk
 mkswap $diskp2         # swap
 mkfs.ext4 $diskp3      # boot
-mkfs.fat -F 32 $diskp1 # main disk
 
 # mount
 mount $diskp3 /mnt
