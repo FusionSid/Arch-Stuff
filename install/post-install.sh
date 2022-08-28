@@ -26,9 +26,6 @@ if [ "$installdesktop" == "y" ] || [ "$installdesktop" == "yes" ]; then
     elif [ $desktop == 'kde' ]; then
         sudo pacman -S plasma konsole packagekit-qt5 sddm --noconfirm
         sudo systemctl enable sddm
-    elif [ $desktop == 'xfce' ]; then
-        sudo pacman -S xfce4 xfce4-goodies lightdm lightdm-gtk-greeter --noconfirm
-        sudo systemctl enable lightdm
     elif [ $desktop == 'bspwm' ]; then
         sudo pacman -S bspwm sxhkd dmenu polybar picom feh arandr --noconfirm
     else
@@ -70,11 +67,9 @@ clear
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +"PlugInstall" +qa
+
 # nvim
 nvim +PackerSync +qa
-
-# Zsh autosuggestions
-sudo git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Change owner for home dir
 cd
