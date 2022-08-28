@@ -46,7 +46,11 @@ lsblk
 read -p "Enter disk name: " disk_name
 
 # Install grub and create config
-grub-install $disk_name
+if [ "$(uname -m)" == "x86_64" ]; then
+    grub-install $disk_name --target=x86_64-efi --efi-directory=/boot/efi
+else  
+    grub-install $disk_name
+fi
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
