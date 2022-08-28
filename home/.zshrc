@@ -1,20 +1,24 @@
-PS1="%n@%m %~$ "
+PS1="%n@%m %~$ " #incase prompt fails
 
-# Oh My Zsh stuff
-export ZSH="/usr/share/oh-my-zsh"
-
-ZSH_THEME="robbyrussell"
-
-plugins=(
-  git
-  python
-  zsh-autosuggestions
-)
-
-source $ZSH/oh-my-zsh.sh
+# prompt
+eval "$(starship init zsh)"
 
 # Pip
 PATH="/home/sid/.local/bin:$PATH"
 
 # aliases
-alias update="yay -Syu"
+source ~/.aliases
+
+# On startup
+pfetch
+
+# Terminal History 
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
+# Terminal name
+precmd () {print -Pn "\e]0;%~\a"}

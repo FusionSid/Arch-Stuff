@@ -33,7 +33,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 setxkbmap us &
-feh --bg-fill ~/wallpaper.jpeg # place holder for later where ill put a better wallpaper
+feh --bg-fill ~/wallpaper.png # place holder for later where ill put a better wallpaper
 xinput set-prop 7 "libinput Natural Scrolling Enabled" 1
 xsetroot -cursor_name left_ptr
 picom -f &

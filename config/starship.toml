@@ -1,0 +1,34 @@
+#format = "(bold green)$directory$git_branch$character"
+
+format = """
+$directory\
+$git_branch\
+$git_metrics\
+$nodejs\
+$python\
+$rust\
+$character"""
+
+add_newline = false
+
+[nodejs]
+format = "[$symbol]($style)"
+
+[directory]
+style = "bold cyan"
+truncation_length = 10
+truncate_to_repo = false
+
+[git_branch]
+symbol = " "
+format = "on [$symbol$branch]($style) "
+
+[git_metrics]
+disabled = false
+
+[rust]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'

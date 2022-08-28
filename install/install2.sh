@@ -46,6 +46,7 @@ read -p "Enter disk name: " disk_name
 
 # Install grub and create config
 grub-install $disk_name
+
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # remove the running of this script from bashrc

@@ -1,0 +1,20 @@
+# YT-DLP
+alias mp3="yt-dlp -f 'ba' -x --audio-format mp3 $1 --no-check-certificate" # download an mp3
+alias mp4="yt-dlp -f 'bv[height>=720][ext=mp4]+ba[ext=m4a]' --embed-thumbnail --merge-output-format mp4 '$1' -o '%(id)s.mp4' --no-check-certificate" # download an mp4
+
+# Remove files
+alias pycd="find . | grep -E '(__pycache__|\.pyc|\.pyo$)' | xargs rm -rf" # remove all pycache stuff
+alias rmao="find . | grep -e 'a\.out' | xargs rm -rf" # remove  a.out files
+
+# Core command replacements 
+alias ls="exa -hG"
+alias l="exa -lahGF"
+alias ccat="bat"
+
+# Other
+alias docker_prune="docker system prune -a -f --volumes" # prune for docker
+alias pyreq="cat requirements.txt | xargs -n 1 pip install" # Install all requirements 1 by 1
+alias v="vim"
+alias nv="nvim"
+alias k="kitty"
+alias update="yay -Syu"

@@ -49,8 +49,8 @@ sudo cp -r $SCRIPT_DIR/config/* ~/.config
 # Install Yay
 cd ~/ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm && cd && rm -rf yay
 
-# Oh my zsh
-yay -S oh-my-zsh-git --noconfirm
+# # Oh my zsh
+# yay -S oh-my-zsh-git --noconfirm
 
 # Terminal font
 sudo wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip" -O $SCRIPT_DIR/fc.zip
@@ -67,9 +67,9 @@ cp -r $SCRIPT_DIR/home/. ~/
 sudo chmod +x ~/.config/polybar/launch.sh
 
 # Useful Yay packages
-yay -S vim-plug firefox kitty lolcat bashtop \
+yay -S vim-plug nvim-packer-git firefox kitty lolcat bashtop \
     hollywood cmatrix neovim mpv gcc \
-    zsh-autosuggestions zsh-completions --noconfirm
+    zsh-autosuggestions zsh-completions pfetch --noconfirm
 clear
 
 # Install vim plugins
