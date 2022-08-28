@@ -40,13 +40,19 @@ fi
 
 
 # Copy dotfiles
+sudo mkdir -p ~/.config
 sudo cp -r $SCRIPT_DIR/config/* ~/.config
 
 # Install Yay
+cd ~/ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm && cd && rm -rf yay
 
 # Terminal font
+sudo wget "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip" -O $SCRIPT_DIR/fc.zip
+sudo mkdir -p /usr/share/fonts/FiraCode
+sudo unzip $SCRIPT_DIR/fc.zip -d /usr/share/fonts/FiraCode
 
 # Install pip
+curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
 
 # Home dir
 cp -r $SCRIPT_DIR/home/. ~/
@@ -64,6 +70,8 @@ clear
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +"PlugInstall" +qa
+# nvim
+nvim +PackerSync +qa
 
 # Zsh autosuggestions
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
