@@ -7,6 +7,7 @@
 pacman -Syu \
     ntp zsh neofetch tmux unzip wget \
     iwd tree htop python3 network-manager-applet \
+    mpv youtube-dl yt-dlp \
     openssh git xorg xorg-xinit sudo pulseaudio --noconfirm
 
 # locale and time
