@@ -22,3 +22,6 @@ bindkey "^[[B" down-line-or-beginning-search
 
 # Terminal name
 precmd () {print -Pn "\e]0;%~\a"}
+
+# fix rofi
+export LC_ALL="C"

@@ -27,7 +27,7 @@ if [ "$installdesktop" == "y" ] || [ "$installdesktop" == "yes" ]; then
         sudo pacman -S plasma konsole packagekit-qt5 sddm --noconfirm
         sudo systemctl enable sddm
     elif [ $desktop == 'bspwm' ]; then
-        sudo pacman -S bspwm sxhkd dmenu polybar picom feh arandr --noconfirm
+        sudo pacman -S bspwm sxhkd dmenu polybar picom feh arandr rofi --noconfirm
     else
         echo 'Not a valid choice skill issue'
     fi
