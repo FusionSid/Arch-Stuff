@@ -70,8 +70,6 @@ vim +"PlugInstall" +qa
 
 # nvim
 git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
-mkdir -p ~/.config/nvim/lua/user
-mv ~/init.lua ~/.config/nvim/lua/user/
 nvim +PackerSync
 
 # Change owner for home dir
