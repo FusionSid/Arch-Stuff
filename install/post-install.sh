@@ -69,7 +69,10 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 vim +"PlugInstall" +qa
 
 # nvim
-nvim +PackerSync +qa
+git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+mkdir -p ~/.config/nvim/lua/user
+mv ~/init.lua ~/.config/nvim/lua/user/
+nvim +PackerSync
 
 # Change owner for home dir
 cd
