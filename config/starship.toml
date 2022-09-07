@@ -7,7 +7,10 @@ $git_metrics\
 $nodejs\
 $python\
 $rust\
-$character"""
+$c\
+$sudo\
+🗿 $character 
+"""
 
 add_newline = false
 
@@ -20,15 +23,23 @@ truncation_length = 10
 truncate_to_repo = false
 
 [git_branch]
-symbol = " "
+symbol = " "
 format = "on [$symbol$branch]($style) "
 
 [git_metrics]
 disabled = false
 
 [rust]
-symbol = " "
-format = "[$symbol($version )]($style)"
+symbol = "🦀"
+format = "[$symbol]($style)"
 
 [python]
-format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+symbol = "🐍"
+format = '[$symbol]($style)'
+
+[c]
+format = '[$symbol]($style)'
+
+[sudo]
+format = '[$symbol]($style)'
+disabled = false
