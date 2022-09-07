@@ -1,3 +1,7 @@
 [user]
 	name = FusionSid
 	email = siddheshadsv@icloud.com
+[credential]
+	helper = manager
+[core]
+	editor = vim
